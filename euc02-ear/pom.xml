@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+	  <artifactId>euc02-sitiouec</artifactId>
+	  <groupId>com.citi.euces</groupId>
+	  <version>1.0</version>
+	</parent>
+
+	<artifactId>euc02-ear</artifactId>
+	<packaging>ear</packaging>
+
+	<properties>
+		<ear.name>euc-sitiouec-app</ear.name>
+		<context.app.web>/euc-sitiouec</context.app.web>
+	</properties>
+	<name>${ear.name}</name>
+
+	<dependencies>
+		<dependency>
+			<artifactId>euc02-service</artifactId>
+			<groupId>com.citi.euces</groupId>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<artifactId>euc02-web</artifactId>
+			<groupId>com.citi.euces</groupId>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+				    <source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>3.1.0</version>
+				<configuration>
+					<version>8</version>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<displayName>${ear.name}</displayName>
+                    <finalName>${ear.name}-${project.version}</finalName>
+					<modules>
+						<webModule>
+							<groupId>com.citi.euces</groupId>
+							<artifactId>euc02-web</artifactId>
+							<contextRoot>${context.app.web}</contextRoot>
+						</webModule>
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

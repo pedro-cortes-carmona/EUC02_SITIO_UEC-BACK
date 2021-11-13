@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>euc02-sitiouec</artifactId>
+	  <groupId>com.citi.euces</groupId>
+		<version>1.0</version>
+	</parent>
+
+	<artifactId>euc02-web</artifactId>
+	<packaging>war</packaging>
+
+	<properties>
+		<!-- JEE 8 -->
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+		<war.final.name>euc02-web</war.final.name>
+	</properties>
+
+	<name>${war.final.name}</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>8.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Services  -->
+		<dependency>
+			<artifactId>euc02-service</artifactId>
+			<groupId>com.citi.euces</groupId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+			<scope>provided</scope>
+			<!-- Some containers like Tomcat don't have jstl library -->
+		</dependency>
+		<dependency>
+		    <groupId>com.nimbusds</groupId>
+		    <artifactId>nimbus-jose-jwt</artifactId>
+		    <version>8.3</version>
+		</dependency>
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.7</version>
+		</dependency>
+		 <dependency>
+			    <groupId>org.apache.poi</groupId>
+			    <artifactId>poi-ooxml</artifactId>
+			    <version>4.1.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.itextpdf</groupId>
+			<artifactId>itextpdf</artifactId>
+			<version>5.3.4</version>
+		</dependency>
+		
+<!-- 		<dependency> -->
+<!-- 		    <groupId>com.citi.euc</groupId> -->
+<!-- 		    <artifactId>euc-commons-jar</artifactId> -->
+<!-- 		    <version>1.0.0.FINAL</version> -->
+<!-- 		    <exclusions> -->
+<!-- 		    	<exclusion> -->
+<!-- 		    		<groupId>org.springframework</groupId> -->
+<!-- 		    		<artifactId>spring-webmvc</artifactId>   -->
+<!-- 		    	</exclusion> -->
+<!-- 		    	<exclusion> -->
+<!-- 		    		<groupId>org.springframework.boot</groupId> -->
+<!-- 		    		<artifactId>spring-boot-starter-data-jpa</artifactId>  -->
+<!-- 		    	</exclusion> -->
+<!-- 			</exclusions> -->
+<!-- 		</dependency> -->
+		
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+				    <source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<groupId>org.apache.maven.plugins</groupId>
+				<version>3.2.2</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
